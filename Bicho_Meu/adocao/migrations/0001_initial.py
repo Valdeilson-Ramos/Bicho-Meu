@@ -15,14 +15,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Adocao',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
-                ('registro', models.DateTimeField(default=datetime.datetime(2019, 9, 25, 20, 37, 50, 749911, tzinfo=utc))),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('registro', models.DateTimeField(default=datetime.datetime(2019, 9, 26, 12, 27, 12, 596820, tzinfo=utc))),
             ],
         ),
         migrations.CreateModel(
             name='Animal',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('nome', models.CharField(max_length=200)),
                 ('idade', models.IntegerField(default=0)),
                 ('especie', models.CharField(max_length=30)),
@@ -33,33 +33,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Cliente',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('nome', models.CharField(max_length=200)),
+                ('cpf', models.CharField(max_length=15, default=None)),
                 ('endereco', models.CharField(max_length=200)),
                 ('telefone', models.CharField(max_length=200)),
                 ('email', models.CharField(max_length=200)),
                 ('registro', models.DateTimeField(auto_now_add=True)),
-                ('genero', models.CharField(max_length=2, choices=[('M', 'Masculino'), ('F', 'Feminino')])),
+                ('genero', models.CharField(choices=[('M', 'Masculino'), ('F', 'Feminino')], max_length=2)),
             ],
         ),
         migrations.CreateModel(
             name='Doador',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('nome', models.CharField(max_length=200)),
+                ('cpf', models.CharField(max_length=15, default=None)),
                 ('endereco', models.CharField(max_length=200)),
                 ('telefone', models.CharField(max_length=200)),
                 ('email', models.CharField(max_length=200)),
                 ('registro', models.DateTimeField(auto_now_add=True)),
-                ('genero', models.CharField(max_length=2, choices=[('M', 'Masculino'), ('F', 'Feminino')])),
+                ('genero', models.CharField(choices=[('M', 'Masculino'), ('F', 'Feminino')], max_length=2)),
             ],
         ),
         migrations.CreateModel(
             name='Raca',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
                 ('nome', models.CharField(max_length=200)),
-                ('porte', models.CharField(max_length=2, choices=[('P', 'Pequeno'), ('M', 'Medio'), ('G', 'Grande')])),
+                ('porte', models.CharField(choices=[('P', 'Pequeno'), ('M', 'Medio'), ('G', 'Grande')], max_length=2)),
             ],
         ),
         migrations.AddField(

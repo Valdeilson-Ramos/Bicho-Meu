@@ -1,0 +1,9 @@
+{% if registros %}
+    <ul>
+    {% for registro in registros %}
+	<li><a href="{% url 'adocao:cliente_detalhe' registro.id %}">{{ registro.nome }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum cliente registrado.</p>
+{% endif %}

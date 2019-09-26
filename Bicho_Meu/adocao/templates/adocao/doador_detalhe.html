@@ -1,0 +1,13 @@
+<h1>Nome: {{ doador.nome }}</h1>
+<p>Endereco: {{ doador.endereco }}</p>
+<p>Telefone: {{ doador.telefone }}</p>
+<p>Email: {{ doador.email }}</p>
+<p>Cpf: {{ doador.cpf }}</p>
+<p>Registro: {{ doador.registro }}</p>
+<p>Genero: {{ doador.genero }}</p>
+
+<ul>
+{% for animal in doador.animal_set.all %}
+    <li>{{ animal }}</li>
+{% endfor %}
+</ul>
