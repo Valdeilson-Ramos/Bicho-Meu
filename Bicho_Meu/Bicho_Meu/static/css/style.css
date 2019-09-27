@@ -1,0 +1,8 @@
+body {
+  background: white url("/static/adocao/imagens/groot.jpg") no-repeat;
+  background-size: contain;
+}
+
+li a {
+  color: green;
+}

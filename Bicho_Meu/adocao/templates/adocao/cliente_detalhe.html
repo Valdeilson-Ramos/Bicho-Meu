@@ -1,13 +1,19 @@
-<h1>{{ cliente.nome }}</h1>
-<p>Endereco: {{ cliente.endereco }}</p>
-<p>Telefone: {{ cliente.telefone }}</p>
-<p>Email: {{ cliente.email }}</p>
-<p>Cpf: {{ cliente.cpf }}</p>
-<p>Registro: {{ cliente.registro }}</p>
-<p>Genero: {{ cliente.genero }}</p>
+{% extends 'base.html' %}
 
-<ul>
-{% for adocao in cliente.adocao_set.all %}
-    <li>{{ adocao }}</li>
-{% endfor %}
-</ul>
+{% block conteudo %}
+
+  <h1>{{ cliente.nome }}</h1>
+  <p>Endereco: {{ cliente.endereco }}</p>
+  <p>Telefone: {{ cliente.telefone }}</p>
+  <p>Email: {{ cliente.email }}</p>
+  <p>Cpf: {{ cliente.cpf }}</p>
+  <p>Registro: {{ cliente.registro }}</p>
+  <p>Genero: {{ cliente.genero }}</p>
+
+  <ul>
+  {% for adocao in cliente.adocao_set.all %}
+      <li>{{ adocao }}</li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bicho Meu - Loja de Estimação</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="Site de adoção de bichos de estimação">
+		<meta name="author" content="Alunos Python RNP">
+		<meta name="robots" content="index, follow">
+
+		<!-- Override CSS file - add your own CSS rules -->
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+		<div class="header">
+			{% block header %}
+			<div class="container">
+				<h1 class="header-heading">Bicho meu - adote um companheiro</h1>
+			</div>
+			{% endblock %}
+		</div>
+		<div class="nav-bar">
+			<div class="container">
+				{% block navigation %}
+				<ul class="nav">
+					<li>
+            <a href="{% url 'index' %}">
+							Home
+						</a>
+          </li>
+          <li>
+						<a href="{% url 'adocao:index' %}">
+							Adoção
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'adocao:clientes' %}">
+							Clientes
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'adocao:doadores' %}">
+							Doadores
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'adocao:animais' %}">
+							Animais
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'adocao:racas' %}">
+							Raças
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'adocao:busca' %}">
+							Busca
+						</a>
+					</li>
+					<li><a href="#">Contato</a></li>
+				</ul>
+				{% endblock %}
+			</div>
+		</div>
+		<div class="content">
+			<div class="container">
+				<div class="main">
+					{% block conteudo %}
+					<h1>Page title</h1>
+					<hr>
+
+					<!-- Paragraphs -->
+					<h3>Paragraphs</h3>
+					<p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				&copy; Copyright 2019
+			</div>
+		</div>
+	</body>
+</html>

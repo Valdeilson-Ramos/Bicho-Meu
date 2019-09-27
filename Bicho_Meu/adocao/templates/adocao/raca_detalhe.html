@@ -1,8 +1,12 @@
-<h1>Nome: {{ raca.nome }}</h1>
-<p>Porte: {{ raca.porte }}</p>
+{% extends 'base.html' %}
 
-<ul>
-{% for animal in raca.animal_set.all %}
-    <li>{{ animal }}</li>
-{% endfor %}
-</ul>
+{% block conteudo %}
+  <h1>Nome: {{ raca.nome }}</h1>
+  <p>Porte: {{ raca.porte }}</p>
+
+  <ul>
+  {% for animal in raca.animal_set.all %}
+      <li>{{ animal }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

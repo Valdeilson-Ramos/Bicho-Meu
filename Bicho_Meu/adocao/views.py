@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.views import generic
 
 from .models import Adocao
 from .models import Animal
@@ -11,6 +12,87 @@ from .models import Doador
 from .models import Raca
 
 
+class IndexView(generic.ListView):
+    template_name = 'adocao/index.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        return Adocao.objects.order_by('-registro')[:5]
+
+
+class AdocaoDetalhe(generic.DetailView):
+    model = Adocao
+    template_name = 'adocao/detalhe.html'
+
+
+class ClientesView(generic.ListView):
+    template_name = 'adocao/clientes.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        return Cliente.objects.order_by('-registro')[:5]
+
+
+class ClienteDetalhe(generic.DetailView):
+    model = Cliente
+    template_name = 'adocao/cliente_detalhe.html'
+
+
+class DoadoresView(generic.ListView):
+    template_name = 'adocao/doadores.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        return Doador.objects.order_by('-registro')[:5]
+
+
+class DoadorDetalhe(generic.DetailView):
+    model = Doador
+    template_name = 'adocao/doador_detalhe.html'
+
+
+class AnimaisView(generic.ListView):
+    template_name = 'adocao/animais.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        return Animal.objects.order_by('-registro')[:5]
+
+
+class AnimalDetalhe(generic.DetailView):
+    model = Animal
+    template_name = 'adocao/animal_detalhe.html'
+
+
+class RacasView(generic.ListView):
+    template_name = 'adocao/racas.html'
+    context_object_name = 'registros'
+
+    def get_queryset(self):
+        return Raca.objects.order_by('nome')
+
+
+class RacaDetalhe(generic.DetailView):
+    model = Raca
+    template_name = 'adocao/raca_detalhe.html'
+
+
+def busca(request):
+    context = {}
+    if 'termo' in request.POST:
+        termo = request.POST.get('termo', '')
+        if len(termo) > 0:
+            registros = Animal.objects.filter(nome=termo).order_by('nome')
+            context['termo'] = termo
+            context['registros'] = registros
+        else:
+            error_message = 'É necessário fornecer um termo de pesquisa!'
+            context['termo'] = termo
+            context['error_message'] = error_message
+
+    return render(request, 'adocao/busca.html', context)
+
+'''
 def index(request):
     registros = Adocao.objects.order_by('-registro')[:5]
     template = loader.get_template('adocao/index.html')
@@ -94,3 +176,4 @@ def busca(request):
             context['error_message'] = error_message
 
     return render(request, 'adocao/busca.html', context)
+'''
